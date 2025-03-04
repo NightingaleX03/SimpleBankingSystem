@@ -5,8 +5,7 @@ import datetime
 class Account:
     def __init__(self, id=None):
         print(id)
-        if not id or str(id) == "-1":
-            print("yes -1")
+        if not id or str(id) == "-1" or not id.isdigit(): # If id is invalid or user wants to create account
             self.id = self.generate_unique_id()
         else:
             self.id = id
@@ -113,6 +112,9 @@ class Account:
                 return -1
         if value <= 0:
             print("Error: Deposit amount must be greater than zero.")
+            return -1
+        if value >= 1000000:
+            print("Error: Deposit was denied due to a suspicious amount of money being deposited at once (did you steal this money? Rob a bank?)")
             return -1
         self.balance = data["balance"] + value
         print(f"Your new balance is ${self.balance:.2f}.")
