@@ -9,6 +9,7 @@ class Account:
             self.id = self.generate_unique_id()
         else:
             self.id = id
+            
 
         data = self.load()
 
