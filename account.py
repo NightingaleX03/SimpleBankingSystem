@@ -80,11 +80,18 @@ class Account:
         if value is None:
             print("How much money would you like to withdraw: ")
             try:
-                value = float(input())
+                value = input()
+                try:
+                    if len(str(value).split('.')[1]) > 2:
+                        print("Error: You cannot withdraw less than a cent.")
+                        return -1
+                except:
+                    pass
+                value = float(value)
             except ValueError:
                 print("Error: Invalid input. Please enter a numeric value.")
                 return -1
-        if value <= 0:
+        if value < 0.01:
             print("Error: Withdrawal amount must be greater than zero.")
             return -1
         if value > data["balance"]:
@@ -106,11 +113,18 @@ class Account:
         if value is None:
             print("Please enter the amount you wish to deposit: ")
             try:
-                value = float(input())
+                value = input()
+                try:
+                    if len(str(value).split('.')[1]) > 2:
+                        print("Error: You cannot deposit less than a cent (where are you getting this money from?)")
+                        return -1
+                except:
+                    pass
+                value = float(value)
             except ValueError:
                 print("Error: Invalid input. Please enter a numeric value.")
                 return -1
-        if value <= 0:
+        if value < 0.01:
             print("Error: Deposit amount must be greater than zero.")
             return -1
         if value >= 1000000:
