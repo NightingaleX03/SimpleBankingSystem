@@ -4,8 +4,8 @@ def print_menu(user_id):
     print(f"""
           
     ================================
-                USER ID
-    {user_id}
+    |            USER ID           |
+                {user_id}                     
     ================================
     |                              |
     |         BANKING MENU         |
